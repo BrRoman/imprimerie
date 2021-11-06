@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center w-100">
+        <div id="works_list">
+            {% for work in works %}
+                <ul class="list-unstyled">
+                    <a href={% url 'main:details' work.pk %} work={{ work.pk }}>{{ work.name }}</a>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
