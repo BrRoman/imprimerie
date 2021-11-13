@@ -1,7 +1,14 @@
 {% extends 'main.html' %}
 
+{% load l10n %}
+
 {% block content %}
     <h3>Details of work {{ work.name }}</h3>
+
+    {% localize on %}
+    <small>Créé : {{ work.created|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+    <small>Modifié : {{ work.modified|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+    {% endlocalize %}
 
     <a href={% url 'main:update' work.pk %}>Update</a>
 {% endblock content %}
