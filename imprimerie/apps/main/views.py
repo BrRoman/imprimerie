@@ -1,5 +1,6 @@
 """ apps/main/views.py """
 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -8,6 +9,7 @@ from .models import Work
 from .forms import WorkForm
 
 
+@login_required
 def list(request):
     """ List of works. """
     works = Work.objects.all().order_by('-modified')
@@ -19,6 +21,8 @@ def list(request):
         },
     )
 
+
+@login_required
 def details(request, **kwargs):
     """ Details of a work. """
     work = Work.objects.get(pk=kwargs['pk'])
@@ -30,6 +34,8 @@ def details(request, **kwargs):
         }
     )
 
+
+@login_required
 def update(request, **kwargs):
     """ Update a work. """
     work = Work.objects.get(pk=kwargs['pk'])
