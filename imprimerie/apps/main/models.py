@@ -2,6 +2,7 @@
 
 from django.db import models
 
+
 class Work(models.Model):
     """ Work Model. """
     name = models.CharField(
