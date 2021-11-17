@@ -23,6 +23,26 @@ def list(request):
 
 
 @login_required
+def create(request):
+    """ Create a work. """
+    if request.method == 'POST':
+        form = WorkForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return HttpResponseRedirect(reverse('main:list'))
+
+    form = WorkForm()
+
+    return render(
+        request,
+        'main/form.html',
+        {
+            'form': form,
+        }
+    )
+
+
+@login_required
 def details(request, **kwargs):
     """ Details of a work. """
     work = Work.objects.get(pk=kwargs['pk'])
