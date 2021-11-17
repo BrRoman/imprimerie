@@ -63,3 +63,24 @@ def update(request, **kwargs):
             'work': work,
         }
     )
+
+
+@login_required
+def delete(request, **kwargs):
+    """ Delete a work. """
+    work = Work.objects.get(pk=kwargs['pk'])
+    if request.method == 'POST':
+        form = WorkForm(request.POST, instance=work)
+        work.delete()
+        return HttpResponseRedirect(reverse('main:list'))
+
+    form = WorkForm(instance=work)
+
+    return render(
+        request,
+        'main/delete.html',
+        {
+            'form': form,
+            'work': work,
+        },
+    )
