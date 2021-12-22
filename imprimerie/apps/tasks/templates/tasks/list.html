@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active">Travaux</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <h1>Liste des travaux</h1>
+
+    <a href={% url 'tasks:create' %}>Ajouter un travail</a>
+
+    <ul>
+        {% for task in tasks %}
+            <a href={% url 'tasks:details' task.pk %}><li>{{ task }}</li></a>
+        {% endfor %}
+    </ul>
+{% endblock content %}

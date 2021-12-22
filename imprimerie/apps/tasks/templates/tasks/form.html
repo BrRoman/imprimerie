@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+
+{% load widget_tweaks %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active"><a href={% url 'tasks:list' %}>Travaux</a></li>
+    {% if task %}
+        <li class="breadcrumb-item active"><a href={% url 'tasks:details' task.pk %}>{{ task }}</a></li>
+        <li class="breadcrumb-item active">Modifier</li>
+    {% else %}
+        <li class="breadcrumb-item active">Créer</li>
+    {% endif %}
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <form class="d-flex flex-column align-items-center w-100 mb-3" method="post" novalidate>
+        <div class="border border-success rounded p-2 mb-2">
+            {% csrf_token %}
+
+            <!-- Name -->
+            <div class="form-group">
+                {{ form.name.label_tag }}
+
+                {% if form.is_bound %}
+                    {% if form.name.errors %}
+                        {% render_field form.name class="form-control is-invalid" %}
+                        {% for error in form.name.errors %}
+                            <div class="invalid-feedback" style="display: block;">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field form.name class="form-control is-valid" %}
+                    {% endif %}
+                {% else %}
+                    {% render_field form.name class="form-control" %}
+                {% endif %}
+
+                {% if form.name.help_text %}
+                    <small class="form-text text-muted">
+                        {{ form.name.help_text }}
+                    </small>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Validation -->
+        <button type="submit" class="btn btn-success mx-3">Enregistrer</button>
+    </form>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="d-flex flex-column align-items-center">
+        <h1>Bienvenue sur Imprimerie !</h1>
+    
+        <div class="d-flex justify-content-center w-50 mt-5">
+            <div class="mx-3">
+                <a href={% url 'tasks:list' %} class="d-flex flex-column align-items-center">
+                    <span class="fas fa-tools mx-2" style="font-size:2em;"></span>
+                    <p>Gérer les travaux</p>
+                </a>
+            </div>
+
+            <div class="mx-3">
+                <a href={% url 'papers:list' %} class="d-flex flex-column align-items-center">
+                    <span class="fas fa-copy mx-2" style="font-size:2em;"></span>
+                    <p>Gérer les papiers</p>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

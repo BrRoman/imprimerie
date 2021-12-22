@@ -1,12 +1,12 @@
-""" apps/main/forms.py """
+""" apps/tasks/forms.py """
 
 from django import forms
 
-from .models import Work
+from .models import Task
 
 
-class WorkForm(forms.ModelForm):
-    """ Form for Work. """
+class TaskForm(forms.ModelForm):
+    """ Form for Task. """
     name = forms.CharField(
         max_length=255,
         label='Nom',
@@ -19,7 +19,7 @@ class WorkForm(forms.ModelForm):
     )
 
     class Meta:
-        model = Work
+        model = Task
         fields = [
             'name',
         ]

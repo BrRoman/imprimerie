@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active"><a href={% url 'tasks:list' %}>Travaux</a></li>
+    <li class="breadcrumb-item active">{{ task }}</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <div class="d-flex flex-column align-items-center">
+        <h3>{{ task.name }}</h3>
+    
+        {% localize on %}
+            <small>Créé : {{ task.created|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+            <small>Modifié : {{ task.modified|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+        {% endlocalize %}
+    
+        <a href={% url 'tasks:update' task.pk %}>Modifier</a>
+        <a href={% url 'tasks:delete' task.pk %}>Supprimer</a>
+        <a href={% url 'tasks:list' %}>Retour à la liste des travaux</a>
+    </div>
+{% endblock content %}

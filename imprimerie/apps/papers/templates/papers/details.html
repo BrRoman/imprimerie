@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active"><a href={% url 'papers:list' %}>Papiers</a></li>
+    <li class="breadcrumb-item active">{{ paper }}</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <div class="d-flex flex-column align-items-center">
+        <h3>{{ paper.name }}</h3>
+    
+        {% localize on %}
+            <small>Créé : {{ paper.created|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+            <small>Modifié : {{ paper.modified|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+        {% endlocalize %}
+    
+        <a href={% url 'papers:update' paper.pk %}>Modifier</a>
+        <a href={% url 'papers:delete' paper.pk %}>Supprimer</a>
+        <a href={% url 'papers:list' %}>Retour à la liste des papiers</a>
+    </div>
+{% endblock content %}

@@ -2,6 +2,16 @@
 
 {% load widget_tweaks %}
 
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active"><a href={% url 'papers:list' %}>Papiers</a></li>
+    {% if paper %}
+        <li class="breadcrumb-item active"><a href={% url 'papers:details' paper.pk %}>{{ paper }}</a></li>
+        <li class="breadcrumb-item active">Modifier</li>
+    {% else %}
+        <li class="breadcrumb-item active">Créer</li>
+    {% endif %}
+{% endblock breadcrumbs %}
+
 {% block content %}
     <form class="d-flex flex-column align-items-center w-100 mb-3" method="post" novalidate>
         <div class="border border-success rounded p-2 mb-2">

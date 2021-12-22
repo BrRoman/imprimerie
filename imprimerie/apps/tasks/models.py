@@ -1,10 +1,10 @@
-""" apps/main/models.py """
+""" apps/tasks/models.py """
 
 from django.db import models
 
 
-class Work(models.Model):
-    """ Work Model. """
+class Task(models.Model):
+    """ Task Model. """
     name = models.CharField(
         max_length=255,
     )

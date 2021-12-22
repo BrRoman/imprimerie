@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active">Papiers</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <h1>Liste des papiers</h1>
+
+    <a href={% url 'papers:create' %}>Ajouter un papier</a>
+
+    <ul>
+        {% for paper in papers %}
+            <a href={% url 'papers:details' paper.pk %}><li>{{ paper }}</li></a>
+        {% endfor %}
+    </ul>
+{% endblock content %}
