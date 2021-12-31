@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active">Clients</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <h1>Liste des clients</h1>
+
+    <a href={% url 'clients:create' %}>Ajouter un client</a>
+
+    <ul>
+        {% for client in clients %}
+            <a href={% url 'clients:details' client.pk %}><li>{{ client }}</li></a>
+        {% endfor %}
+    </ul>
+{% endblock content %}

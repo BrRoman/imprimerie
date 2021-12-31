@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active"><a href={% url 'clients:list' %}>Clients</a></li>
+    <li class="breadcrumb-item active">{{ client }}</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <div class="d-flex flex-column align-items-center">
+        <h3>{{ client }}</h3>
+    
+        {% localize on %}
+            <small>Créé : {{ client.created|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+            <small>Modifié : {{ client.modified|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+        {% endlocalize %}
+    
+        <a href={% url 'clients:update' client.pk %}>Modifier</a>
+        <a href={% url 'clients:delete' client.pk %}>Supprimer</a>
+        <a href={% url 'clients:list' %}>Retour à la liste des clients</a>
+    </div>
+{% endblock content %}

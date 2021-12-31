@@ -13,6 +13,13 @@
             </div>
 
             <div class="mx-3">
+                <a href={% url 'clients:list' %} class="d-flex flex-column align-items-center">
+                    <span class="fas fa-user-alt mx-2" style="font-size:2em;"></span>
+                    <p>Gérer les clients</p>
+                </a>
+            </div>
+
+            <div class="mx-3">
                 <a href={% url 'papers:list' %} class="d-flex flex-column align-items-center">
                     <span class="fas fa-copy mx-2" style="font-size:2em;"></span>
                     <p>Gérer les papiers</p>

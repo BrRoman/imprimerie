@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active"><a href={% url 'clients:list' %}>Clients</a></li>
+    <li class="breadcrumb-item"><a href={% url 'clients:details' client.id %}>{{ client }}</a></li>
+    <li class="breadcrumb-item active">Supprimer</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <form method="post" class="d-flex flex-column align-items-center">
+        {% csrf_token %}
+
+        <div class="text-white bg-danger rounded text-center mb-4 px-5 py-3">
+            <span class="fas fa-exclamation-triangle"></span>
+            <h2>Êtes-vous sûr de vouloir supprimer ce client ?</h2>
+            <h3>{{ client }}</h3>
+        </div>
+    
+        <div id="validation">
+            <a href={% url 'clients:details' client.pk %} class="btn btn-secondary">Non</a>
+            <button type="submit" class="btn btn-primary">Oui</button>
+        </div>
+    </form>
+{% endblock content %}
