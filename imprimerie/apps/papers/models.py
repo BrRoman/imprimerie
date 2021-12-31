@@ -8,6 +8,13 @@ class Paper(models.Model):
     name = models.CharField(
         max_length=255,
     )
+    price = models.DecimalField(
+        decimal_places=2,
+        max_digits=7,
+    )
+    length = models.CharField(
+        max_length=7,
+    )
     created = models.DateTimeField(
         auto_now_add=True,
     )
