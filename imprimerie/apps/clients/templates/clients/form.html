@@ -17,6 +17,32 @@
         <div class="border border-success rounded p-2 mb-2">
             {% csrf_token %}
 
+            <!-- Quality -->
+            <div class="form-group">
+                {{ form.quality.label_tag }}
+
+                {% if form.is_bound %}
+                    {% if form.quality.errors %}
+                        {% render_field form.quality class="form-control is-invalid" %}
+                        {% for error in form.quality.errors %}
+                            <div class="invalid-feedback" style="display: block;">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field form.quality class="form-control is-valid" %}
+                    {% endif %}
+                {% else %}
+                    {% render_field form.quality class="form-control" %}
+                {% endif %}
+
+                {% if form.quality.help_text %}
+                    <small class="form-text text-muted">
+                        {{ form.quality.help_text }}
+                    </small>
+                {% endif %}
+            </div>
+
             <!-- First name -->
             <div class="form-group">
                 {{ form.first_name.label_tag }}
@@ -65,6 +91,136 @@
                 {% if form.last_name.help_text %}
                     <small class="form-text text-muted">
                         {{ form.last_name.help_text }}
+                    </small>
+                {% endif %}
+            </div>
+
+            <!-- Address 1 -->
+            <div class="form-group">
+                {{ form.address1.label_tag }}
+
+                {% if form.is_bound %}
+                    {% if form.address1.errors %}
+                        {% render_field form.address1 class="form-control is-invalid" %}
+                        {% for error in form.address1.errors %}
+                            <div class="invalid-feedback" style="display: block;">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field form.address1 class="form-control is-valid" %}
+                    {% endif %}
+                {% else %}
+                    {% render_field form.address1 class="form-control" %}
+                {% endif %}
+
+                {% if form.address1.help_text %}
+                    <small class="form-text text-muted">
+                        {{ form.address1.help_text }}
+                    </small>
+                {% endif %}
+            </div>
+
+            <!-- Address 2 -->
+            <div class="form-group">
+                {{ form.address2.label_tag }}
+
+                {% if form.is_bound %}
+                    {% if form.address2.errors %}
+                        {% render_field form.address2 class="form-control is-invalid" %}
+                        {% for error in form.address2.errors %}
+                            <div class="invalid-feedback" style="display: block;">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field form.address2 class="form-control is-valid" %}
+                    {% endif %}
+                {% else %}
+                    {% render_field form.address2 class="form-control" %}
+                {% endif %}
+
+                {% if form.address2.help_text %}
+                    <small class="form-text text-muted">
+                        {{ form.address2.help_text }}
+                    </small>
+                {% endif %}
+            </div>
+
+            <!-- Address 3 -->
+            <div class="form-group">
+                {{ form.address3.label_tag }}
+
+                {% if form.is_bound %}
+                    {% if form.address3.errors %}
+                        {% render_field form.address3 class="form-control is-invalid" %}
+                        {% for error in form.address3.errors %}
+                            <div class="invalid-feedback" style="display: block;">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field form.address3 class="form-control is-valid" %}
+                    {% endif %}
+                {% else %}
+                    {% render_field form.address3 class="form-control" %}
+                {% endif %}
+
+                {% if form.address3.help_text %}
+                    <small class="form-text text-muted">
+                        {{ form.address3.help_text }}
+                    </small>
+                {% endif %}
+            </div>
+
+            <!-- Zip -->
+            <div class="form-group">
+                {{ form.zip.label_tag }}
+
+                {% if form.is_bound %}
+                    {% if form.zip.errors %}
+                        {% render_field form.zip class="form-control is-invalid" %}
+                        {% for error in form.zip.errors %}
+                            <div class="invalid-feedback" style="display: block;">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field form.zip class="form-control is-valid" %}
+                    {% endif %}
+                {% else %}
+                    {% render_field form.zip class="form-control" %}
+                {% endif %}
+
+                {% if form.zip.help_text %}
+                    <small class="form-text text-muted">
+                        {{ form.zip.help_text }}
+                    </small>
+                {% endif %}
+            </div>
+
+            <!-- City -->
+            <div class="form-group">
+                {{ form.city.label_tag }}
+
+                {% if form.is_bound %}
+                    {% if form.city.errors %}
+                        {% render_field form.city class="form-control is-invalid" %}
+                        {% for error in form.city.errors %}
+                            <div class="invalid-feedback" style="display: block;">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field form.city class="form-control is-valid" %}
+                    {% endif %}
+                {% else %}
+                    {% render_field form.city class="form-control" %}
+                {% endif %}
+
+                {% if form.city.help_text %}
+                    <small class="form-text text-muted">
+                        {{ form.city.help_text }}
                     </small>
                 {% endif %}
             </div>

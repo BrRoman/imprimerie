@@ -5,6 +5,9 @@ from django.db import models
 
 class Client(models.Model):
     """ Client model. """
+    quality = models.CharField(
+        max_length=25,
+    )
     first_name = models.CharField(
         max_length=255,
     )
@@ -34,6 +37,4 @@ class Client(models.Model):
     )
 
     def __str__(self):
-        return self.first_name + \
-            (' ' if self.first_name and self.last_name else '') + \
-            self.last_name
+        return '{} {} {}'.format(self.quality, self.first_name, self.last_name).lstrip()

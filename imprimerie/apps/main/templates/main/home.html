@@ -3,27 +3,29 @@
 {% block content %}
     <div class="d-flex flex-column align-items-center">
         <h1>Bienvenue sur Imprimerie !</h1>
-    
-        <div class="d-flex justify-content-center w-50 mt-5">
-            <div class="mx-3">
-                <a href={% url 'tasks:list' %} class="d-flex flex-column align-items-center">
+
+        <div class="d-flex flex-column justify-content-center align-items-center mt-5">
+            <div class="mx-3 my-3">
+                <a href={% url 'jobs:list' %} class="d-flex flex-column align-items-center">
                     <span class="fas fa-tools mx-2" style="font-size:2em;"></span>
-                    <p>Gérer les travaux</p>
+                    <p>Gérer les jobs</p>
                 </a>
             </div>
-
-            <div class="mx-3">
-                <a href={% url 'clients:list' %} class="d-flex flex-column align-items-center">
-                    <span class="fas fa-user-alt mx-2" style="font-size:2em;"></span>
-                    <p>Gérer les clients</p>
-                </a>
-            </div>
-
-            <div class="mx-3">
-                <a href={% url 'papers:list' %} class="d-flex flex-column align-items-center">
-                    <span class="fas fa-copy mx-2" style="font-size:2em;"></span>
-                    <p>Gérer les papiers</p>
-                </a>
+    
+            <div class="d-flex justify-content-center">
+                <div class="mx-3">
+                    <a href={% url 'clients:list' %} class="d-flex flex-column align-items-center">
+                        <span class="fas fa-user-alt mx-2" style="font-size:2em;"></span>
+                        <p>Gérer les clients</p>
+                    </a>
+                </div>
+    
+                <div class="mx-3">
+                    <a href={% url 'papers:list' %} class="d-flex flex-column align-items-center">
+                        <span class="fas fa-copy mx-2" style="font-size:2em;"></span>
+                        <p>Gérer les papiers</p>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

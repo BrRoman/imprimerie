@@ -12,7 +12,7 @@ from .forms import PaperForm
 @login_required
 def list(request):
     """ List of papers. """
-    papers = Paper.objects.all()
+    papers = Paper.objects.all().order_by('name', 'dim1', 'dim2')
     return render(
         request,
         'papers/list.html',
@@ -45,12 +45,8 @@ def create(request):
 @login_required
 def details(request, **kwargs):
     """ Details of a paper. """
-    if 'pk' in kwargs.keys():
-        paper = Paper.objects.get(pk=kwargs['pk'])
-    else:
-        paper = Paper.objects.all().order_by('-modified')[0]
-        redirect('papers:details', pk=paper.pk, permanent=True)
-    papers = Paper.objects.all().order_by('-modified')
+    paper = Paper.objects.get(pk=kwargs['pk'])
+    papers = Paper.objects.all().order_by('name', 'dim1', 'dim2')
     return render(
         request,
         'papers/details.html',

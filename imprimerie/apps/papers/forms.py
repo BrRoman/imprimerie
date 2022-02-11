@@ -17,9 +17,23 @@ class PaperForm(forms.ModelForm):
             }
         )
     )
+    dim1 = forms.CharField()
+    dim2 = forms.CharField()
+    weight = forms.IntegerField(
+        required=False,
+    )
+    price = forms.DecimalField(
+        required=False,
+        decimal_places=2,
+        max_digits=7,
+    )
 
     class Meta:
         model = Paper
         fields = [
             'name',
+            'dim1',
+            'dim2',
+            'weight',
+            'price',
         ]

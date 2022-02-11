@@ -10,12 +10,7 @@
 
 {% block content %}
     <div class="d-flex flex-column align-items-center">
-        <h3>{{ paper.name }}</h3>
-    
-        {% localize on %}
-            <small>Créé : {{ paper.created|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
-            <small>Modifié : {{ paper.modified|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
-        {% endlocalize %}
+        <h3>{{ paper }}</h3>
     
         <a href={% url 'papers:update' paper.pk %}>Modifier</a>
         <a href={% url 'papers:delete' paper.pk %}>Supprimer</a>

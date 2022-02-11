@@ -1,10 +1,10 @@
-""" apps/tasks/urls.py """
+""" apps/jobs/urls.py """
 
 from django.urls import path
 
 from . import views
 
-app_name = 'tasks'
+app_name = 'jobs'
 urlpatterns = [
     path('', views.list, name='list'),
     path('create/', views.create, name='create'),

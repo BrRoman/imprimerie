@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active"><a href={% url 'jobs:list' %}>Jobs</a></li>
+    <li class="breadcrumb-item active">{{ job }}</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <div class="d-flex flex-column align-items-center">
+        <h3>{{ job }}</h3>
+    
+        {% localize on %}
+            <small>Créé : {{ job.created|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+            <small>Modifié : {{ job.modified|date:"l j F Y à H:i:s"|localize|capfirst }}</small>
+        {% endlocalize %}
+
+        {% if elements %}
+            <table class="table table-bordered table-sm">
+                <tr>
+                    <th>Nom de l'élément</th>
+                    <th>Quantité</th>
+                    <th>Papier</th>
+                    <th></th>
+                </tr>
+                {% for element in elements %}
+                    <tr>
+                        <td>{{ element }}</td>
+                        <td>{{ element.quantity }}</td>
+                        <td>{{ element.paper }} ({{ element.paper_dim1_machine }}x{{ element.paper_dim2_machine }})</td>
+                        <td><a href={% url 'elements:details' element.pk %}>Détails</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>Il n'y a pas encore d'élément dans ce job.</p>
+        {% endif %}
+        <a href={% url 'elements:create' job.pk %}>Ajouter un élément</a>
+
+        <a href={% url 'jobs:update' job.pk %}>Modifier</a>
+        <a href={% url 'jobs:delete' job.pk %}>Supprimer</a>
+        <a href={% url 'jobs:list' %}>Retour à la liste des jobs</a>
+    </div>
+{% endblock content %}

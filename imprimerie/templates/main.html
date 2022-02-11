@@ -19,7 +19,7 @@
 
     <body>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <div class="container mw-100 mx-0">
+            <div class="container mx-0">
                 <div id="logo" class="col-4 mr-auto d-flex">
                     <a href={% url 'main:home' %}>
                         <img src={% static 'img/imprimerie.png' %} class="mr-2 align-middle" style="width: 40px;">
@@ -53,7 +53,7 @@
             </ol>
         </div>
 
-        <div id="content" class="mx-5 my-3">
+        <div id="content" class="d-flex flex-column align-items-center mx-5 my-3">
             {% block content %}
             {% endblock content %}
         </div>

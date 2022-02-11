@@ -1,8 +1,8 @@
 {% extends 'main.html' %}
 
 {% block breadcrumbs %}
-    <li class="breadcrumb-item active"><a href={% url 'tasks:list' %}>Travaux</a></li>
-    <li class="breadcrumb-item"><a href={% url 'tasks:details' task.id %}>{{ task }}</a></li>
+    <li class="breadcrumb-item active"><a href={% url 'jobs:list' %}>Jobs</a></li>
+    <li class="breadcrumb-item"><a href={% url 'jobs:details' job.id %}>{{ job }}</a></li>
     <li class="breadcrumb-item active">Supprimer</li>
 {% endblock breadcrumbs %}
 
@@ -12,12 +12,12 @@
 
         <div class="text-white bg-danger rounded text-center mb-4 px-5 py-3">
             <span class="fas fa-exclamation-triangle"></span>
-            <h2>Êtes-vous sûr de vouloir supprimer ce travail ?</h2>
-            <h3>{{ task }}</h3>
+            <h2>Êtes-vous sûr de vouloir supprimer ce job ?</h2>
+            <h3>{{ job }}</h3>
         </div>
     
         <div id="validation">
-            <a href={% url 'task:details' task.pk %} class="btn btn-secondary">Non</a>
+            <a href={% url 'jobs:details' job.pk %} class="btn btn-secondary">Non</a>
             <button type="submit" class="btn btn-primary">Oui</button>
         </div>
     </form>

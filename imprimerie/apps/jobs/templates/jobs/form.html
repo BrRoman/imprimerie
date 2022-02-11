@@ -3,9 +3,9 @@
 {% load widget_tweaks %}
 
 {% block breadcrumbs %}
-    <li class="breadcrumb-item active"><a href={% url 'tasks:list' %}>Travaux</a></li>
-    {% if task %}
-        <li class="breadcrumb-item active"><a href={% url 'tasks:details' task.pk %}>{{ task }}</a></li>
+    <li class="breadcrumb-item active"><a href={% url 'jobs:list' %}>Jobs</a></li>
+    {% if job %}
+        <li class="breadcrumb-item active"><a href={% url 'jobs:details' job.pk %}>{{ job }}</a></li>
         <li class="breadcrumb-item active">Modifier</li>
     {% else %}
         <li class="breadcrumb-item active">Créer</li>
@@ -39,6 +39,32 @@
                 {% if form.name.help_text %}
                     <small class="form-text text-muted">
                         {{ form.name.help_text }}
+                    </small>
+                {% endif %}
+            </div>
+
+            <!-- Client -->
+            <div class="form-group">
+                {{ form.client.label_tag }}
+
+                {% if form.is_bound %}
+                    {% if form.client.errors %}
+                        {% render_field form.client class="form-control is-invalid" %}
+                        {% for error in form.client.errors %}
+                            <div class="invalid-feedback" style="display: block;">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% render_field form.client class="form-control is-valid" %}
+                    {% endif %}
+                {% else %}
+                    {% render_field form.client class="form-control" %}
+                {% endif %}
+
+                {% if form.client.help_text %}
+                    <small class="form-text text-muted">
+                        {{ form.client.help_text }}
                     </small>
                 {% endif %}
             </div>

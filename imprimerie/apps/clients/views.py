@@ -12,7 +12,7 @@ from .forms import ClientForm
 @login_required
 def list(request):
     """ List of clients. """
-    clients = Client.objects.all()
+    clients = Client.objects.all().order_by('last_name', 'first_name')
     return render(
         request,
         'clients/list.html',
@@ -45,12 +45,8 @@ def create(request):
 @login_required
 def details(request, **kwargs):
     """ Details of a client. """
-    if 'pk' in kwargs.keys():
-        client = Client.objects.get(pk=kwargs['pk'])
-    else:
-        client = Client.objects.all().order_by('-modified')[0]
-        redirect('clients:details', pk=client.pk, permanent=True)
-    clients = Client.objects.all().order_by('-modified')
+    client = Client.objects.get(pk=kwargs['pk'])
+    clients = Client.objects.all().order_by('last_name', 'first_name')
     return render(
         request,
         'clients/details.html',

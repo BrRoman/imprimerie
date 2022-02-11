@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active"><a href={% url 'jobs:list' %}>Jobs</a></li>
+    <li class="breadcrumb-item active"><a href={% url 'jobs:details' job.pk %}>{{ job }}</a></li>
+    <li class="breadcrumb-item active">{{ element }}</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <div class="d-flex flex-column align-items-center">
+        <h3>{{ element.name }}</h3>
+
+        <table class="table table-sm table-bordered">
+            <tr>
+                <td>Quantité :</td>
+                <td>{{ element.quantity }}</td>
+            </tr>
+            <tr>
+                <td>Papier :</td>
+                <td>
+                    {{ element.paper }}<br>
+                    <small>Prix du mille : {{ element.paper.price|floatformat:2 }}€</small>
+                </td>
+            </tr>
+            <tr>
+                <td>Coupé en :</td>
+                <td>
+                    {{ element.paper_cut_into }}<br>
+                    <small>Prix de la feuille : {{ price_sheet|floatformat:2 }}€</small>
+                </td>
+            </tr>
+            <tr>
+                <td>Format papier machine :</td>
+                <td>{{ element.paper_dim1_machine|floatformat:0 }}x{{ element.paper_dim2_machine|floatformat:0 }}</td>
+            </tr>
+            <tr>
+                <td>Dimensions du fichier :</td>
+                <td>{{ element.file_width|floatformat:0 }}x{{ element.file_height|floatformat:0 }}</td>
+            </tr>
+            <tr>
+                <td>Imposition :</td>
+                <td>{{ element.imposition }}</td>
+            </tr>
+            <tr>
+                <td>Nombre de pages :</td>
+                <td>{{ element.number_of_pages }}</td>
+            </tr>
+            <tr>
+                <td>Recto-verso :</td>
+                <td>{{ element.recto_verso }}</td>
+            </tr>
+        </table>
+    
+        <a href={% url 'elements:update' element.pk %}>Modifier</a>
+        <a href={% url 'elements:delete' element.pk %}>Supprimer</a>
+        <a href={% url 'jobs:details' job.pk %}>Retour au job {{ job }}</a>
+        <a href={% url 'jobs:list' %}>Retour à la liste des jobs</a>
+    </div>
+{% endblock content %}

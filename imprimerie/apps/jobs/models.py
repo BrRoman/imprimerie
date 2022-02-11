@@ -1,25 +1,26 @@
-""" apps/tasks/models.py """
+""" apps/jobs/models.py """
 
 from django.db import models
 from django.db.models.deletion import CASCADE
 
 from apps.clients.models import Client
-from apps.papers.models import Paper
 
 
-class Task(models.Model):
-    """ Task model. """
+class Job(models.Model):
+    """ Job model. """
+    name = models.CharField(
+        max_length=255,
+    )
     client = models.ForeignKey(
         Client,
         on_delete=CASCADE,
     )
-    name = models.CharField(
+    quantity_client = models.IntegerField()
+    finition = models.CharField(
         max_length=255,
     )
-    paper = models.ForeignKey(
-        Paper,
-        on_delete=CASCADE,
-    )
+    dim1_finished = models.IntegerField()
+    dim2_finished = models.IntegerField()
     created = models.DateTimeField(
         auto_now_add=True,
     )

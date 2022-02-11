@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active">Jobs</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <h1>Liste des jobs</h1>
+
+    <a href={% url 'jobs:create' %}>Ajouter un job</a>
+
+    <table class="table table-bordered table-sm">
+        <tr>
+            <th>Nom</th>
+            <th>Client</th>
+            <th>Créé</th>
+            <th>Modifié</th>
+            <th></th>
+        </tr>
+
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job.name }}</td>
+                <td>{{ job.client }}</td>
+                <td>{{ job.created }}</td>
+                <td>{{ job.modified }}</td>
+                <td><a href={% url 'jobs:details' job.pk %}>Détails</a></td>
+            </tr>
+            {% endfor %}
+    </table>
+{% endblock content %}

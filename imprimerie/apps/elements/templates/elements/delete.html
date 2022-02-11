@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item active"><a href={% url 'jobs:list' %}>Jobs</a></li>
+    <li class="breadcrumb-item active"><a href={% url 'jobs:details' job.pk %}>{{ job }}</a></li>
+    <li class="breadcrumb-item"><a href={% url 'elements:details' element.id %}>{{ element }}</a></li>
+    <li class="breadcrumb-item active">Supprimer</li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <form method="post" class="d-flex flex-column align-items-center">
+        {% csrf_token %}
+
+        <div class="text-white bg-danger rounded text-center mb-4 px-5 py-3">
+            <span class="fas fa-exclamation-triangle"></span>
+            <h2>Êtes-vous sûr de vouloir supprimer cet élément ?</h2>
+            <h3>{{ element }}</h3>
+        </div>
+    
+        <div id="validation">
+            <a href={% url 'elements:details' element.pk %} class="btn btn-secondary">Non</a>
+            <button type="submit" class="btn btn-primary">Oui</button>
+        </div>
+    </form>
+{% endblock content %}
