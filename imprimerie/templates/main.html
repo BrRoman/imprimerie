@@ -47,7 +47,17 @@
 
         <div id="breadcrumbs">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href={% url 'main:home' %}><span class="fas fa-home"></span></a></li>
+                <div class="dropdown breadcrumb-item ml-3">
+                    <div class="dropdown">
+                        <a href={% url 'main:home' %}><li class="dropdown_button"><span class="fas fa-home"></span></li></a>
+                        <div class="dropdown_content">
+                            <a href={% url 'clients:list' %}>Clients</a>
+                            <a href={% url 'papers:list' %}>Papiers</a>
+                            <a href={% url 'jobs:list' %}>Jobs</a>
+                        </div>
+                    </div>
+                </div>
+
                 {% block breadcrumbs %}
                 {% endblock breadcrumbs %}
             </ol>
